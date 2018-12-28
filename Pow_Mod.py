@@ -1,0 +1,34 @@
+#Memory efficient
+def loop(n, x, z):
+    index = 1
+    for i in range(0,n):
+        index *= (x % z)
+    print("end ", n)
+    return index % z
+
+def pow_mod(x, y, z):
+    number = x % z
+    index = 1
+    final = 1
+    while y:
+        if y & 1:
+            final *= loop(index, x, z)
+        y >>= 1
+        index <<=1
+    return final % z
+
+#Time efficient
+def pow_mod2(x, y, z):
+    number = 1
+    while y:
+        if y & 1:
+            number = number * x % z
+        y >>= 1
+        x = x * x % z
+    return number
+
+#print(pow_mod(12421423, 465434654, 983287923478))
+#print("\n", pow_mod(0x68656c6c6f20776f726c64, 65537, 0x00ca0f066756ade1e013ab7da7dc68ffb5aa79e1630be654b151d1a1ac893bf5f3333b08149eb6d245c88b82c2a3abb2637c78e37387a827f5895b128c44859d08de2f3294b95b1753fd7c14c901b668ec5f53e970f81b588bc33ad94ec20c1e9236a85de2368790332045ed2b2fa557e8301432e1e7f10019dfaf339d4e8c7b29))
+print("\n", pow_mod(0x68656c6c6f20776f726c64, 0x67e7840e7de75ac0e4bc8a1858e271a454aeea3509b87f12d4152dc350aad1d62721130daf7429fb129e93364dfe0bf4d6dc3f72786f03656325bf0afc6d8d0b496139fcd8426e41e41b7bcf9baa09796f0ebaead4c8a445b14254e8abfbdb9ec90164745e1cc47763c97755fb66651c521f622652f8d22728cf885d9b10dad1, 0x00ca0f066756ade1e013ab7da7dc68ffb5aa79e1630be654b151d1a1ac893bf5f3333b08149eb6d245c88b82c2a3abb2637c78e37387a827f5895b128c44859d08de2f3294b95b1753fd7c14c901b668ec5f53e970f81b588bc33ad94ec20c1e9236a85de2368790332045ed2b2fa557e8301432e1e7f10019dfaf339d4e8c7b29))
+#print("\n", pow_mod2(0x68656c6c6f20776f726c64, 0x67e7840e7de75ac0e4bc8a1858e271a454aeea3509b87f12d4152dc350aad1d62721130daf7429fb129e93364dfe0bf4d6dc3f72786f03656325bf0afc6d8d0b496139fcd8426e41e41b7bcf9baa09796f0ebaead4c8a445b14254e8abfbdb9ec90164745e1cc47763c97755fb66651c521f622652f8d22728cf885d9b10dad1, 0x00ca0f066756ade1e013ab7da7dc68ffb5aa79e1630be654b151d1a1ac893bf5f3333b08149eb6d245c88b82c2a3abb2637c78e37387a827f5895b128c44859d08de2f3294b95b1753fd7c14c901b668ec5f53e970f81b588bc33ad94ec20c1e9236a85de2368790332045ed2b2fa557e8301432e1e7f10019dfaf339d4e8c7b29))
+
